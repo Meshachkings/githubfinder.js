@@ -28,8 +28,41 @@ class UI{
                         </div>
                 <div>
             </div>
-            <h3 class="page-heading mb-3"><Latest Repos/h3>
+            <h3 class="page-heading mb-3">Latest Repos</h3>
             <div id="repos"></div>  
         `
+    }
+    //show alert
+    showAlert(message, className) {
+        // clear Alert
+        this.clearAlert();
+        // create div
+        const div = document.createElement('div');
+        // set class name
+        div.className = className;
+        // add text
+        div.appendChild(document.createTextNode(message));
+        // get parent class
+        const container = document.querySelector('.searchContainer');
+        // get search class
+        const search = document.querySelector('.search');
+        // insert alert
+        container.insertBefore(div, search);
+        // set timeout
+        setTimeout(() => {
+            this.clearAlert();
+        }, 3000)
+        
+    }
+    // clear alert message
+    clearAlert() {
+        const currentAlert = document.querySelector('.alert');
+        if (currentAlert){
+            currentAlert.remove();
+        }
+    }
+    //clear Profile
+    clearProfile() {
+        this.profile.innerHTML='';
     }
 }
